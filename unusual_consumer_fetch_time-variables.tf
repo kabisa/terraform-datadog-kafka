@@ -42,7 +42,7 @@ variable "unusual_consumer_fetch_time_docs" {
 
 variable "unusual_consumer_fetch_time_filter_override" {
   type    = string
-  default = "aiven-service:kafka-prod"
+  default = ""
 }
 
 variable "unusual_consumer_fetch_time_alerting_enabled" {

@@ -45,7 +45,7 @@ variable "unusual_fetch_failures_docs" {
 
 variable "unusual_fetch_failures_filter_override" {
   type    = string
-  default = "aiven-service:kafka-prod"
+  default = ""
 }
 
 variable "unusual_fetch_failures_alerting_enabled" {

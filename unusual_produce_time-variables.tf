@@ -47,7 +47,7 @@ variable "unusual_produce_time_docs" {
 
 variable "unusual_produce_time_filter_override" {
   type    = string
-  default = "aiven-service:kafka-prod"
+  default = ""
 }
 
 variable "unusual_produce_time_alerting_enabled" {
