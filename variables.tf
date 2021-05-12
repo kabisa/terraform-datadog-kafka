@@ -33,3 +33,9 @@ variable "locked" {
   type    = bool
   default = true
 }
+
+variable "system_checks" {
+  type = string
+  default = "yes"
+  description = "Whether or not to include system checks"
+}

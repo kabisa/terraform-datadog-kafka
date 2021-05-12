@@ -1,6 +1,8 @@
 module "system" {
   source = "git@github.com:kabisa/terraform-datadog-system.git?ref=0.7"
 
+  count = var.system_checks == "yes" ? 1 : 0
+
   locked               = var.locked
   additional_tags      = var.additional_tags
   alert_env            = var.alert_env
