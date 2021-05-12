@@ -33,3 +33,8 @@ variable "locked" {
   type    = bool
   default = true
 }
+
+variable "systems_notification" {
+  type    = bool
+  default = true
+}
