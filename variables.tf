@@ -34,7 +34,7 @@ variable "locked" {
   default = true
 }
 
-variable "systems_notification" {
-  type    = bool
-  default = true
+variable "system_notification_channel_override" {
+  type    = string
+  default = null
 }

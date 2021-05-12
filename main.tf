@@ -6,7 +6,10 @@ module "system" {
   alert_env            = var.alert_env
   env                  = var.env
   filter_str           = var.filter_str
-  notification_channel = var.systems_notification ? var.notification_channel : ""
+
+  notification_channel = var.system_notification_channel_override == null ? var.notification_channel : var.system_notification_channel_override
+
+
   service              = var.service
   bytes_sent_docs      = "If you are monitoring Kafka’s bytes in/out metric, you are getting Kafka’s side of the story. To get a full picture of network usage on your host, you need to monitor host-level network throughput, especially if your Kafka brokers are hosting other network services. High network usage could be a symptom of degraded performance—if you are seeing high network use, correlating with TCP retransmissions and dropped packet errors could help in determining if the performance issue is network-related.\nhttps://www.datadoghq.com/blog/monitoring-kafka-performance-metrics"
   bytes_received_docs  = "If you are monitoring Kafka’s bytes in/out metric, you are getting Kafka’s side of the story. To get a full picture of network usage on your host, you need to monitor host-level network throughput, especially if your Kafka brokers are hosting other network services. High network usage could be a symptom of degraded performance—if you are seeing high network use, correlating with TCP retransmissions and dropped packet errors could help in determining if the performance issue is network-related.\nhttps://www.datadoghq.com/blog/monitoring-kafka-performance-metrics"
