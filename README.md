@@ -1,5 +1,5 @@
 
-![Kabisa](https://avatars.githubusercontent.com/u/1531725)
+![Datadog](https://imgix.datadoghq.com/img/about/presskit/logo-v/dd_vertical_purple.png)
 
 [//]: # (This file is generated. Do not edit)
 
