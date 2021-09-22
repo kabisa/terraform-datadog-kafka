@@ -4,7 +4,7 @@ locals {
 }
 
 module "fetch_purgatory_size" {
-  source = "git@github.com:kabisa/terraform-datadog-generic-monitor.git?ref=0.5.2"
+  source = "git@github.com:kabisa/terraform-datadog-generic-monitor.git?ref=0.6.2"
 
   name             = "Fetch Purgatory Size"
   query            = "avg(${var.fetch_purgatory_size_evaluation_period}):max:kafka.request.fetch_request_purgatory.size{${local.fetch_purgatory_size_filter}} by {host} > ${var.fetch_purgatory_size_critical}"
@@ -17,7 +17,6 @@ module "fetch_purgatory_size" {
   critical_threshold = var.fetch_purgatory_size_critical
   warning_threshold  = var.fetch_purgatory_size_warning
   priority           = var.fetch_purgatory_size_priority
-  severity           = var.fetch_purgatory_size_severity
   docs               = var.fetch_purgatory_size_docs
   note               = var.fetch_purgatory_size_note
 

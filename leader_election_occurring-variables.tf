@@ -18,11 +18,6 @@ variable "leader_election_occurring_evaluation_period" {
   default = "last_5m"
 }
 
-variable "leader_election_occurring_severity" {
-  type    = string
-  default = "minor"
-}
-
 variable "leader_election_occurring_note" {
   type    = string
   default = ""
@@ -48,7 +43,7 @@ variable "leader_election_occurring_alerting_enabled" {
 }
 
 variable "leader_election_occurring_require_full_window" {
-  type = bool
+  type    = bool
   default = false
 }
 
@@ -56,5 +51,5 @@ variable "leader_election_occurring_priority" {
   description = "Number from 1 (high) to 5 (low)."
 
   type    = number
-  default = null
+  default = 3
 }

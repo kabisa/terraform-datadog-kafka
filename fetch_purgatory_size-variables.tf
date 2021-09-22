@@ -18,11 +18,6 @@ variable "fetch_purgatory_size_evaluation_period" {
   default = "last_30m"
 }
 
-variable "fetch_purgatory_size_severity" {
-  type    = string
-  default = "minor"
-}
-
 variable "fetch_purgatory_size_note" {
   type    = string
   default = ""
@@ -54,5 +49,5 @@ variable "fetch_purgatory_size_priority" {
   description = "Number from 1 (high) to 5 (low)."
 
   type    = number
-  default = null
+  default = 3
 }

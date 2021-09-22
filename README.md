@@ -41,7 +41,6 @@ Steps:
 | produce_purgatory_size_warning             | 100                                      | No       |                                  |
 | produce_purgatory_size_critical            | 200                                      | No       |                                  |
 | produce_purgatory_size_evaluation_period   | last_15m                                 | No       |                                  |
-| produce_purgatory_size_severity            | minor                                    | No       |                                  |
 | produce_purgatory_size_note                | ""                                       | No       |                                  |
 | produce_purgatory_size_docs                | The request purgatory serves as a temporary holding pen for produce and fetch requests waiting to be satisfied.
   If request.required.acks=-1, all produce requests will end up in purgatory until the partition leader receives an acknowledgment from all followers.
@@ -53,7 +52,7 @@ Steps:
 | produce_purgatory_size_filter_override     | ""                                       | No       |                                  |
 | produce_purgatory_size_alerting_enabled    | True                                     | No       |                                  |
 | produce_purgatory_size_require_full_window | True                                     | No       |                                  |
-| produce_purgatory_size_priority            | null                                     | No       | Number from 1 (high) to 5 (low). |
+| produce_purgatory_size_priority            | 3                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## Multiple_active_controllers
@@ -64,7 +63,6 @@ Steps:
 | multiple_active_controllers_warning             | 0                                        | No       |                                  |
 | multiple_active_controllers_critical            | 1                                        | No       |                                  |
 | multiple_active_controllers_evaluation_period   | last_5m                                  | No       |                                  |
-| multiple_active_controllers_severity            | major                                    | No       |                                  |
 | multiple_active_controllers_note                | ""                                       | No       |                                  |
 | multiple_active_controllers_docs                | The first node to boot in a Kafka cluster automatically becomes the controller, and there can be only one. The controller in a Kafka cluster is responsible for maintaining the list of partition leaders, and coordinating leadership transitions (in the event a partition leader becomes unavailable). If it becomes necessary to replace the controller, ZooKeeper chooses a new controller randomly from the pool of brokers. The sum of ActiveControllerCount across all of your brokers should always equal one, and you should alert on any other value that lasts for longer than one second.
   
@@ -73,7 +71,7 @@ Steps:
 | multiple_active_controllers_filter_override     | ""                                       | No       |                                  |
 | multiple_active_controllers_alerting_enabled    | True                                     | No       |                                  |
 | multiple_active_controllers_require_full_window | True                                     | No       |                                  |
-| multiple_active_controllers_priority            | null                                     | No       | Number from 1 (high) to 5 (low). |
+| multiple_active_controllers_priority            | 2                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## Offline_partitions
@@ -84,7 +82,6 @@ Steps:
 | offline_partitions_warning             | 0                                        | No       |                                  |
 | offline_partitions_critical            | 0                                        | No       |                                  |
 | offline_partitions_evaluation_period   | last_5m                                  | No       |                                  |
-| offline_partitions_severity            | major                                    | No       |                                  |
 | offline_partitions_note                | ""                                       | No       |                                  |
 | offline_partitions_docs                | This metric reports the number of partitions without an active leader. Because all read and write operations are only performed on partition leaders, you should alert on a non-zero value for this metric to prevent service interruptions. Any partition without an active leader will be completely inaccessible, and both consumers and producers of that partition will be blocked until a leader becomes available.
   
@@ -93,7 +90,7 @@ Steps:
 | offline_partitions_filter_override     | ""                                       | No       |                                  |
 | offline_partitions_alerting_enabled    | True                                     | No       |                                  |
 | offline_partitions_require_full_window | True                                     | No       |                                  |
-| offline_partitions_priority            | null                                     | No       | Number from 1 (high) to 5 (low). |
+| offline_partitions_priority            | 2                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## Fetch_purgatory_size
@@ -104,7 +101,6 @@ Steps:
 | fetch_purgatory_size_warning           | 70000                                    | No       |                                  |
 | fetch_purgatory_size_critical          | 100000                                   | No       |                                  |
 | fetch_purgatory_size_evaluation_period | last_30m                                 | No       |                                  |
-| fetch_purgatory_size_severity          | minor                                    | No       |                                  |
 | fetch_purgatory_size_note              | ""                                       | No       |                                  |
 | fetch_purgatory_size_docs              | The request purgatory serves as a temporary holding pen for produce and fetch requests waiting to be satisfied.
   Fetch requests are added to purgatory if there is not enough data to fulfill the request (fetch.min.bytes on consumers) until the time specified by fetch.wait.max.ms is reached or enough data becomes available
@@ -115,7 +111,7 @@ Steps:
  | No       |                                  |
 | fetch_purgatory_size_filter_override   | ""                                       | No       |                                  |
 | fetch_purgatory_size_alerting_enabled  | True                                     | No       |                                  |
-| fetch_purgatory_size_priority          | null                                     | No       | Number from 1 (high) to 5 (low). |
+| fetch_purgatory_size_priority          | 3                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## No_active_controllers
@@ -126,7 +122,6 @@ Steps:
 | no_active_controllers_warning             | 0                                        | No       |                                  |
 | no_active_controllers_critical            | 1                                        | No       |                                  |
 | no_active_controllers_evaluation_period   | last_5m                                  | No       |                                  |
-| no_active_controllers_severity            | major                                    | No       |                                  |
 | no_active_controllers_note                | ""                                       | No       |                                  |
 | no_active_controllers_docs                | The first node to boot in a Kafka cluster automatically becomes the controller, and there can be only one. The controller in a Kafka cluster is responsible for maintaining the list of partition leaders, and coordinating leadership transitions (in the event a partition leader becomes unavailable). If it becomes necessary to replace the controller, ZooKeeper chooses a new controller randomly from the pool of brokers. The sum of ActiveControllerCount across all of your brokers should always equal one, and you should alert on any other value that lasts for longer than one second.
   
@@ -135,7 +130,7 @@ Steps:
 | no_active_controllers_filter_override     | ""                                       | No       |                                  |
 | no_active_controllers_alerting_enabled    | True                                     | No       |                                  |
 | no_active_controllers_require_full_window | True                                     | No       |                                  |
-| no_active_controllers_priority            | null                                     | No       | Number from 1 (high) to 5 (low). |
+| no_active_controllers_priority            | 2                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## Bytesin High
@@ -146,7 +141,6 @@ Steps:
 | bytesin_high_warning           | 2500000                                  | No       |                                  |
 | bytesin_high_critical          | 5000000                                  | No       |                                  |
 | bytesin_high_evaluation_period | last_30m                                 | No       |                                  |
-| bytesin_high_severity          | minor                                    | No       |                                  |
 | bytesin_high_note              | ""                                       | No       |                                  |
 | bytesin_high_docs              | NOTE: This is based on a baseline and might need adjusting further down the road. 
                                         
@@ -156,7 +150,7 @@ Steps:
  | No       |                                  |
 | bytesin_high_filter_override   | ""                                       | No       |                                  |
 | bytesin_high_alerting_enabled  | True                                     | No       |                                  |
-| bytesin_high_priority          | null                                     | No       | Number from 1 (high) to 5 (low). |
+| bytesin_high_priority          | 3                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## Unusual_follower_fetch_time
@@ -167,7 +161,6 @@ Steps:
 | unusual_follower_fetch_time_warning             | 800                                      | No       |                                  |
 | unusual_follower_fetch_time_critical            | 1000                                     | No       |                                  |
 | unusual_follower_fetch_time_evaluation_period   | last_30m                                 | No       |                                  |
-| unusual_follower_fetch_time_severity            | minor                                    | No       |                                  |
 | unusual_follower_fetch_time_note                | ""                                       | No       |                                  |
 | unusual_follower_fetch_time_docs                | produce: requests from producers to send data
   fetch-consumer: requests from consumers to get new data
@@ -180,7 +173,7 @@ Steps:
 | unusual_follower_fetch_time_filter_override     | ""                                       | No       |                                  |
 | unusual_follower_fetch_time_alerting_enabled    | True                                     | No       |                                  |
 | unusual_follower_fetch_time_require_full_window | True                                     | No       |                                  |
-| unusual_follower_fetch_time_priority            | null                                     | No       | Number from 1 (high) to 5 (low). |
+| unusual_follower_fetch_time_priority            | 3                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## Unusual_produce_failures
@@ -191,7 +184,6 @@ Steps:
 | unusual_produce_failures_warning             | 40                                       | No       |                                  |
 | unusual_produce_failures_critical            | 50                                       | No       |                                  |
 | unusual_produce_failures_evaluation_period   | last_30m                                 | No       |                                  |
-| unusual_produce_failures_severity            | minor                                    | No       |                                  |
 | unusual_produce_failures_note                | ""                                       | No       |                                  |
 | unusual_produce_failures_docs                | The TotalTimeMs metric family measures the total time taken to service a request (be it a produce, fetch-consumer, or fetch-follower request):
   
@@ -208,7 +200,7 @@ Steps:
 | unusual_produce_failures_filter_override     | ""                                       | No       |                                  |
 | unusual_produce_failures_alerting_enabled    | True                                     | No       |                                  |
 | unusual_produce_failures_require_full_window | True                                     | No       |                                  |
-| unusual_produce_failures_priority            | null                                     | No       | Number from 1 (high) to 5 (low). |
+| unusual_produce_failures_priority            | 3                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## Unusual_consumer_fetch_time
@@ -219,7 +211,6 @@ Steps:
 | unusual_consumer_fetch_time_warning             | 800                                      | No       |                                  |
 | unusual_consumer_fetch_time_critical            | 1000                                     | No       |                                  |
 | unusual_consumer_fetch_time_evaluation_period   | last_30m                                 | No       |                                  |
-| unusual_consumer_fetch_time_severity            | minor                                    | No       |                                  |
 | unusual_consumer_fetch_time_note                | ""                                       | No       |                                  |
 | unusual_consumer_fetch_time_docs                | produce: requests from producers to send data
   fetch-consumer: requests from consumers to get new data
@@ -231,7 +222,7 @@ Steps:
 | unusual_consumer_fetch_time_filter_override     | ""                                       | No       |                                  |
 | unusual_consumer_fetch_time_alerting_enabled    | True                                     | No       |                                  |
 | unusual_consumer_fetch_time_require_full_window | True                                     | No       |                                  |
-| unusual_consumer_fetch_time_priority            | null                                     | No       | Number from 1 (high) to 5 (low). |
+| unusual_consumer_fetch_time_priority            | 3                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## Bytesout_high
@@ -242,7 +233,6 @@ Steps:
 | bytesout_high_warning           | 2500000                                  | No       |                                  |
 | bytesout_high_critical          | 5000000                                  | No       |                                  |
 | bytesout_high_evaluation_period | last_30m                                 | No       |                                  |
-| bytesout_high_severity          | minor                                    | No       |                                  |
 | bytesout_high_note              | ""                                       | No       |                                  |
 | bytesout_high_docs              | NOTE: This is based on a baseline and might need adjusting further down the road.
 
@@ -252,7 +242,7 @@ Steps:
  | No       |                                  |
 | bytesout_high_filter_override   | ""                                       | No       |                                  |
 | bytesout_high_alerting_enabled  | True                                     | No       |                                  |
-| bytesout_high_priority          | null                                     | No       | Number from 1 (high) to 5 (low). |
+| bytesout_high_priority          | 3                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## Unusual_produce_time
@@ -263,7 +253,6 @@ Steps:
 | unusual_produce_time_warning             | 10                                       | No       |                                  |
 | unusual_produce_time_critical            | 20                                       | No       |                                  |
 | unusual_produce_time_evaluation_period   | last_30m                                 | No       |                                  |
-| unusual_produce_time_severity            | minor                                    | No       |                                  |
 | unusual_produce_time_note                | ""                                       | No       |                                  |
 | unusual_produce_time_docs                | The TotalTimeMs metric family measures the total time taken to service a request (be it a produce, fetch-consumer, or fetch-follower request):
   
@@ -280,7 +269,7 @@ Steps:
 | unusual_produce_time_filter_override     | ""                                       | No       |                                  |
 | unusual_produce_time_alerting_enabled    | True                                     | No       |                                  |
 | unusual_produce_time_require_full_window | True                                     | No       |                                  |
-| unusual_produce_time_priority            | null                                     | No       | Number from 1 (high) to 5 (low). |
+| unusual_produce_time_priority            | 3                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## Unclean_leader_election
@@ -291,7 +280,6 @@ Steps:
 | unclean_leader_election_warning             | 100                                      | No       |                                  |
 | unclean_leader_election_critical            | 0                                        | No       |                                  |
 | unclean_leader_election_evaluation_period   | last_5m                                  | No       |                                  |
-| unclean_leader_election_severity            | major                                    | No       |                                  |
 | unclean_leader_election_note                | ""                                       | No       |                                  |
 | unclean_leader_election_docs                | Unclean leader elections occur when there is no qualified partition leader among Kafka brokers. Normally, when a broker that is the leader for a partition goes offline, a new leader is elected from the set of ISRs for the partition. Unclean leader election is disabled by default in Kafka version 0.11 and newer, meaning that a partition is taken offline if it does not have any ISRs to elect as the new leader. If Kafka is configured to allow an unclean leader election, a leader is chosen from the out-of-sync replicas, and any messages that were not synced prior to the loss of the former leader are lost forever. Essentially, unclean leader elections sacrifice consistency for availability. You should alert on this metric, as it signals data loss.
   
@@ -300,7 +288,7 @@ Steps:
 | unclean_leader_election_filter_override     | ""                                       | No       |                                  |
 | unclean_leader_election_alerting_enabled    | True                                     | No       |                                  |
 | unclean_leader_election_require_full_window | False                                    | No       |                                  |
-| unclean_leader_election_priority            | null                                     | No       | Number from 1 (high) to 5 (low). |
+| unclean_leader_election_priority            | 2                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## Leader_election_occurring
@@ -311,7 +299,6 @@ Steps:
 | leader_election_occurring_warning             | 0                                        | No       |                                  |
 | leader_election_occurring_critical            | 0                                        | No       |                                  |
 | leader_election_occurring_evaluation_period   | last_5m                                  | No       |                                  |
-| leader_election_occurring_severity            | minor                                    | No       |                                  |
 | leader_election_occurring_note                | ""                                       | No       |                                  |
 | leader_election_occurring_docs                | When a partition leader dies, an election for a new leader is triggered. A partition leader is considered “dead” if it fails to maintain its session with ZooKeeper. Unlike ZooKeeper’s Zab, Kafka does not employ a majority-consensus algorithm for leadership election. Instead, Kafka’s quorum is composed of the set of all in-sync replicas (ISRs) for a particular partition. Replicas are considered in-sync if they are caught-up to the leader, which means that any replica in the ISR can be promoted to the leader. 
   
@@ -320,7 +307,7 @@ Steps:
 | leader_election_occurring_filter_override     | ""                                       | No       |                                  |
 | leader_election_occurring_alerting_enabled    | True                                     | No       |                                  |
 | leader_election_occurring_require_full_window | False                                    | No       |                                  |
-| leader_election_occurring_priority            | null                                     | No       | Number from 1 (high) to 5 (low). |
+| leader_election_occurring_priority            | 3                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## Under_replicated_partitions
@@ -331,7 +318,6 @@ Steps:
 | under_replicated_partitions_warning             | 100                                      | No       |                                  |
 | under_replicated_partitions_critical            | 0                                        | No       |                                  |
 | under_replicated_partitions_evaluation_period   | last_15m                                 | No       |                                  |
-| under_replicated_partitions_severity            | minor                                    | No       |                                  |
 | under_replicated_partitions_note                | ""                                       | No       |                                  |
 | under_replicated_partitions_docs                | If a broker becomes unavailable, the value of UnderReplicatedPartitions will increase sharply. Since Kafka’s high-availability guarantees cannot be met without replication, investigation is certainly warranted should this metric value exceed zero for extended time periods.
   
@@ -340,7 +326,7 @@ Steps:
 | under_replicated_partitions_filter_override     | ""                                       | No       |                                  |
 | under_replicated_partitions_alerting_enabled    | True                                     | No       |                                  |
 | under_replicated_partitions_require_full_window | True                                     | No       |                                  |
-| under_replicated_partitions_priority            | null                                     | No       | Number from 1 (high) to 5 (low). |
+| under_replicated_partitions_priority            | 3                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## In_sync_nodes_dropped
@@ -351,7 +337,6 @@ Steps:
 | in_sync_nodes_dropped_warning           | 0                                        | No       |                                  |
 | in_sync_nodes_dropped_critical          | 0                                        | No       |                                  |
 | in_sync_nodes_dropped_evaluation_period | last_5m                                  | No       |                                  |
-| in_sync_nodes_dropped_severity          | major                                    | No       |                                  |
 | in_sync_nodes_dropped_note              | ""                                       | No       |                                  |
 | in_sync_nodes_dropped_docs              | The number of in-sync replicas (ISRs) for a particular partition should remain fairly static, except when you are expanding your broker cluster or removing partitions. In order to maintain high availability, a healthy Kafka cluster requires a minimum number of ISRs for failover. A replica could be removed from the ISR pool if it has not contacted the leader for some time (configurable with the replica.socket.timeout.ms parameter). You should investigate any flapping in the values of these metrics, and any increase in IsrShrinksPerSec without a corresponding increase in IsrExpandsPerSec shortly thereafter.
   
@@ -359,7 +344,7 @@ Steps:
  | No       |                                  |
 | in_sync_nodes_dropped_filter_override   | ""                                       | No       |                                  |
 | in_sync_nodes_dropped_alerting_enabled  | True                                     | No       |                                  |
-| in_sync_nodes_dropped_priority          | null                                     | No       | Number from 1 (high) to 5 (low). |
+| in_sync_nodes_dropped_priority          | 2                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## Unusual_fetch_failures
@@ -370,7 +355,6 @@ Steps:
 | unusual_fetch_failures_warning             | 40                                       | No       |                                  |
 | unusual_fetch_failures_critical            | 50                                       | No       |                                  |
 | unusual_fetch_failures_evaluation_period   | last_30m                                 | No       |                                  |
-| unusual_fetch_failures_severity            | minor                                    | No       |                                  |
 | unusual_fetch_failures_note                | ""                                       | No       |                                  |
 | unusual_fetch_failures_docs                | produce: requests from producers to send data
   fetch-consumer: requests from consumers to get new data
@@ -385,7 +369,7 @@ Steps:
 | unusual_fetch_failures_filter_override     | ""                                       | No       |                                  |
 | unusual_fetch_failures_alerting_enabled    | True                                     | No       |                                  |
 | unusual_fetch_failures_require_full_window | True                                     | No       |                                  |
-| unusual_fetch_failures_priority            | null                                     | No       | Number from 1 (high) to 5 (low). |
+| unusual_fetch_failures_priority            | 3                                        | No       | Number from 1 (high) to 5 (low). |
 
 
 ## Module Variables

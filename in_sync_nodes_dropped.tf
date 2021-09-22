@@ -4,7 +4,7 @@ locals {
 }
 
 module "in_sync_nodes_dropped" {
-  source = "git@github.com:kabisa/terraform-datadog-generic-monitor.git?ref=0.5.2"
+  source = "git@github.com:kabisa/terraform-datadog-generic-monitor.git?ref=0.6.2"
 
   name             = "In Sync Nodes dropped"
   query            = "avg(${var.in_sync_nodes_dropped_evaluation_period}):max:kafka.replication.isr_shrinks.rate{${local.in_sync_nodes_dropped_filter}} by {aiven-service} - max:kafka.replication.isr_expands.rate{${local.in_sync_nodes_dropped_filter}} by {aiven-service} > ${var.in_sync_nodes_dropped_critical}"
@@ -16,10 +16,9 @@ module "in_sync_nodes_dropped" {
   alerting_enabled   = var.in_sync_nodes_dropped_alerting_enabled
   critical_threshold = var.in_sync_nodes_dropped_critical
   # warning_threshold  = var.in_sync_nodes_dropped_warning
-  priority           = var.in_sync_nodes_dropped_priority
-  severity           = var.in_sync_nodes_dropped_severity
-  docs               = var.in_sync_nodes_dropped_docs
-  note               = var.in_sync_nodes_dropped_note
+  priority = var.in_sync_nodes_dropped_priority
+  docs     = var.in_sync_nodes_dropped_docs
+  note     = var.in_sync_nodes_dropped_note
 
   # module level vars
   env                  = var.alert_env

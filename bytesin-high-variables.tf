@@ -18,11 +18,6 @@ variable "bytesin_high_evaluation_period" {
   default = "last_30m"
 }
 
-variable "bytesin_high_severity" {
-  type    = string
-  default = "minor"
-}
-
 variable "bytesin_high_note" {
   type    = string
   default = ""
@@ -53,5 +48,5 @@ variable "bytesin_high_priority" {
   description = "Number from 1 (high) to 5 (low)."
 
   type    = number
-  default = null
+  default = 3
 }

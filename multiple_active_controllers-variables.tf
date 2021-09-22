@@ -18,11 +18,6 @@ variable "multiple_active_controllers_evaluation_period" {
   default = "last_5m"
 }
 
-variable "multiple_active_controllers_severity" {
-  type    = string
-  default = "major"
-}
-
 variable "multiple_active_controllers_note" {
   type    = string
   default = ""
@@ -48,7 +43,7 @@ variable "multiple_active_controllers_alerting_enabled" {
 }
 
 variable "multiple_active_controllers_require_full_window" {
-  type = bool
+  type    = bool
   default = true
 }
 
@@ -56,5 +51,5 @@ variable "multiple_active_controllers_priority" {
   description = "Number from 1 (high) to 5 (low)."
 
   type    = number
-  default = null
+  default = 2
 }
