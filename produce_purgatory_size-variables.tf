@@ -18,11 +18,6 @@ variable "produce_purgatory_size_evaluation_period" {
   default = "last_15m"
 }
 
-variable "produce_purgatory_size_severity" {
-  type    = string
-  default = "minor"
-}
-
 variable "produce_purgatory_size_note" {
   type    = string
   default = ""
@@ -51,7 +46,7 @@ variable "produce_purgatory_size_alerting_enabled" {
 }
 
 variable "produce_purgatory_size_require_full_window" {
-  type = bool
+  type    = bool
   default = true
 }
 
@@ -59,5 +54,5 @@ variable "produce_purgatory_size_priority" {
   description = "Number from 1 (high) to 5 (low)."
 
   type    = number
-  default = null
+  default = 3
 }

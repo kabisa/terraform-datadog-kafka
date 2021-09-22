@@ -18,11 +18,6 @@ variable "in_sync_nodes_dropped_evaluation_period" {
   default = "last_5m"
 }
 
-variable "in_sync_nodes_dropped_severity" {
-  type    = string
-  default = "major"
-}
-
 variable "in_sync_nodes_dropped_note" {
   type    = string
   default = ""
@@ -51,5 +46,5 @@ variable "in_sync_nodes_dropped_priority" {
   description = "Number from 1 (high) to 5 (low)."
 
   type    = number
-  default = null
+  default = 2
 }

@@ -4,7 +4,7 @@ locals {
 }
 
 module "produce_purgatory_size" {
-  source = "git@github.com:kabisa/terraform-datadog-generic-monitor.git?ref=0.5.2"
+  source = "git@github.com:kabisa/terraform-datadog-generic-monitor.git?ref=0.6.2"
 
   name             = "Produce Purgatory Size"
   query            = "avg(${var.produce_purgatory_size_evaluation_period}):max:kafka.request.producer_request_purgatory.size{${local.produce_purgatory_size_filter}} > ${var.produce_purgatory_size_critical}"
@@ -12,14 +12,13 @@ module "produce_purgatory_size" {
   recovery_message = "Purgatory size ({{values}} recovered"
 
   # monitor level vars
-  enabled            = var.produce_purgatory_size_enabled
-  alerting_enabled   = var.produce_purgatory_size_alerting_enabled
-  critical_threshold = var.produce_purgatory_size_critical
-  warning_threshold  = var.produce_purgatory_size_warning
-  priority           = var.produce_purgatory_size_priority
-  severity           = var.produce_purgatory_size_severity
-  docs               = var.produce_purgatory_size_docs
-  note               = var.produce_purgatory_size_note
+  enabled             = var.produce_purgatory_size_enabled
+  alerting_enabled    = var.produce_purgatory_size_alerting_enabled
+  critical_threshold  = var.produce_purgatory_size_critical
+  warning_threshold   = var.produce_purgatory_size_warning
+  priority            = var.produce_purgatory_size_priority
+  docs                = var.produce_purgatory_size_docs
+  note                = var.produce_purgatory_size_note
   require_full_window = var.produce_purgatory_size_require_full_window
 
   # module level vars

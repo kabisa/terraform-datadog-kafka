@@ -18,11 +18,6 @@ variable "unusual_consumer_fetch_time_evaluation_period" {
   default = "last_30m"
 }
 
-variable "unusual_consumer_fetch_time_severity" {
-  type    = string
-  default = "minor"
-}
-
 variable "unusual_consumer_fetch_time_note" {
   type    = string
   default = ""
@@ -51,7 +46,7 @@ variable "unusual_consumer_fetch_time_alerting_enabled" {
 }
 
 variable "unusual_consumer_fetch_time_require_full_window" {
-  type = bool
+  type    = bool
   default = true
 }
 
@@ -59,5 +54,5 @@ variable "unusual_consumer_fetch_time_priority" {
   description = "Number from 1 (high) to 5 (low)."
 
   type    = number
-  default = null
+  default = 3
 }

@@ -18,11 +18,6 @@ variable "under_replicated_partitions_evaluation_period" {
   default = "last_15m"
 }
 
-variable "under_replicated_partitions_severity" {
-  type    = string
-  default = "minor"
-}
-
 variable "under_replicated_partitions_note" {
   type    = string
   default = ""
@@ -48,7 +43,7 @@ variable "under_replicated_partitions_alerting_enabled" {
 }
 
 variable "under_replicated_partitions_require_full_window" {
-  type = bool
+  type    = bool
   default = true
 }
 
@@ -56,5 +51,5 @@ variable "under_replicated_partitions_priority" {
   description = "Number from 1 (high) to 5 (low)."
 
   type    = number
-  default = null
+  default = 3
 }
