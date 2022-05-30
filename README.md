@@ -5,6 +5,8 @@
 
 # Terraform module for Datadog Kafka
 
+This module contains both Kafka specific monitors and system monitors from our system module.
+
 This module is part of a larger suite of modules that provide alerts in Datadog.
 Other modules can be found on the [Terraform Registry](https://registry.terraform.io/search/modules?namespace=kabisa&provider=datadog)
 
@@ -17,15 +19,14 @@ Modules are generated with this tool: https://github.com/kabisa/datadog-terrafor
 # Example Usage
 
 ```terraform
-#module "kafka" {
-#  source = "kabisa/kafka/datadog"
-#
-#  notification_channel       = "mail@example.com"
-#  service                    = "ServiceX"
-#  env                        = "prd"
-#  filter_str                 = "service:kafka"
-#  service_check_include_tags = ["service:kafka"]
-#}
+module "kafka" {
+  source = "kabisa/kafka/datadog"
+
+  notification_channel = "mail@example.com"
+  service              = "ServiceX"
+  env                  = "prd"
+  filter_str           = "service:kafka"
+}
 
 ```
 
