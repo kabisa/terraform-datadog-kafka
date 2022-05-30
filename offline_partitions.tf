@@ -4,7 +4,8 @@ locals {
 }
 
 module "offline_partitions" {
-  source = "git@github.com:kabisa/terraform-datadog-generic-monitor.git?ref=0.6.2"
+  source  = "kabisa/generic-monitor/datadog"
+  version = "0.7.5"
 
   name             = "Offline Partitions"
   query            = "avg(${var.offline_partitions_evaluation_period}):max:kafka.replication.offline_partitions_count{${local.offline_partitions_filter}} > ${var.offline_partitions_critical}"
@@ -16,14 +17,17 @@ module "offline_partitions" {
   alerting_enabled   = var.offline_partitions_alerting_enabled
   critical_threshold = var.offline_partitions_critical
   # warning_threshold  = var.offline_partitions_warning
-  priority            = var.offline_partitions_priority
+  priority            = min(var.offline_partitions_priority + var.priority_offset, 5)
   docs                = var.offline_partitions_docs
   note                = var.offline_partitions_note
   require_full_window = var.offline_partitions_require_full_window
 
   # module level vars
-  env                  = var.alert_env
+  env                  = var.env
   service              = var.service
   notification_channel = var.notification_channel
   additional_tags      = var.additional_tags
+  locked               = var.locked
+  name_prefix          = var.name_prefix
+  name_suffix          = var.name_suffix
 }

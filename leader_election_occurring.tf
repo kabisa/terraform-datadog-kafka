@@ -4,7 +4,8 @@ locals {
 }
 
 module "leader_election_occurring" {
-  source = "git@github.com:kabisa/terraform-datadog-generic-monitor.git?ref=0.6.2"
+  source  = "kabisa/generic-monitor/datadog"
+  version = "0.7.5"
 
   name             = "Leader Election occurring"
   query            = "max(${var.leader_election_occurring_evaluation_period}):avg:kafka.replication.leader_elections.rate{${local.leader_election_occurring_filter}} by {aiven-service} > ${var.leader_election_occurring_critical}"
@@ -16,14 +17,17 @@ module "leader_election_occurring" {
   alerting_enabled   = var.leader_election_occurring_alerting_enabled
   critical_threshold = var.leader_election_occurring_critical
   # warning_threshold  = var.leader_election_occurring_warning
-  priority            = var.leader_election_occurring_priority
+  priority            = min(var.leader_election_occurring_priority + var.priority_offset, 5)
   docs                = var.leader_election_occurring_docs
   note                = var.leader_election_occurring_note
   require_full_window = var.leader_election_occurring_require_full_window
 
   # module level vars
-  env                  = var.alert_env
+  env                  = var.env
   service              = var.service
   notification_channel = var.notification_channel
   additional_tags      = var.additional_tags
+  locked               = var.locked
+  name_prefix          = var.name_prefix
+  name_suffix          = var.name_suffix
 }

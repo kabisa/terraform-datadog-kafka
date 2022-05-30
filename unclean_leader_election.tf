@@ -4,7 +4,8 @@ locals {
 }
 
 module "unclean_leader_election" {
-  source = "git@github.com:kabisa/terraform-datadog-generic-monitor.git?ref=0.6.2"
+  source  = "kabisa/generic-monitor/datadog"
+  version = "0.7.5"
 
   name             = "Unclean Leader Election"
   query            = "avg(${var.unclean_leader_election_evaluation_period}):max:kafka.replication.unclean_leader_elections.rate{${local.unclean_leader_election_filter}} by {aiven-project} > ${var.unclean_leader_election_critical}"
@@ -16,14 +17,17 @@ module "unclean_leader_election" {
   alerting_enabled   = var.unclean_leader_election_alerting_enabled
   critical_threshold = var.unclean_leader_election_critical
   # warning_threshold  = var.unclean_leader_election_warning
-  priority            = var.unclean_leader_election_priority
+  priority            = min(var.unclean_leader_election_priority + var.priority_offset, 5)
   docs                = var.unclean_leader_election_docs
   note                = var.unclean_leader_election_note
   require_full_window = var.unclean_leader_election_require_full_window
 
   # module level vars
-  env                  = var.alert_env
+  env                  = var.env
   service              = var.service
   notification_channel = var.notification_channel
   additional_tags      = var.additional_tags
+  locked               = var.locked
+  name_prefix          = var.name_prefix
+  name_suffix          = var.name_suffix
 }
