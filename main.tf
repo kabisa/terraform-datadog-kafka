@@ -1,9 +1,9 @@
 module "system" {
-  source = "git@github.com:kabisa/terraform-datadog-system.git?ref=0.12.2"
+  source  = "kabisa/system/datadog"
+  version = "1.2.1"
 
   locked          = var.locked
   additional_tags = var.additional_tags
-  alert_env       = var.alert_env
   env             = var.env
   filter_str      = var.filter_str
 

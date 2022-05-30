@@ -4,7 +4,8 @@ locals {
 }
 
 module "bytesout_high" {
-  source = "git@github.com:kabisa/terraform-datadog-generic-monitor.git?ref=0.6.2"
+  source  = "kabisa/generic-monitor/datadog"
+  version = "0.7.5"
 
   name             = "BytesOut unusually high"
   query            = "avg(${var.bytesout_high_evaluation_period}):avg:kafka.net.bytes_out.rate{${local.bytesout_high_filter}} by {host} > ${var.bytesout_high_critical}"
@@ -16,13 +17,16 @@ module "bytesout_high" {
   alerting_enabled   = var.bytesout_high_alerting_enabled
   critical_threshold = var.bytesout_high_critical
   warning_threshold  = var.bytesout_high_warning
-  priority           = var.bytesout_high_priority
+  priority           = min(var.bytesout_high_priority + var.priority_offset, 5)
   docs               = var.bytesout_high_docs
   note               = var.bytesout_high_note
 
   # module level vars
-  env                  = var.alert_env
+  env                  = var.env
   service              = var.service
   notification_channel = var.notification_channel
   additional_tags      = var.additional_tags
+  locked               = var.locked
+  name_prefix          = var.name_prefix
+  name_suffix          = var.name_suffix
 }

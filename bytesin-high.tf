@@ -4,7 +4,8 @@ locals {
 }
 
 module "bytesin_high" {
-  source = "git@github.com:kabisa/terraform-datadog-generic-monitor.git?ref=0.6.2"
+  source  = "kabisa/generic-monitor/datadog"
+  version = "0.7.5"
 
   name             = "BytesIn unusually high"
   query            = "avg(${var.bytesin_high_evaluation_period}):avg:kafka.net.bytes_in.rate{${local.bytesin_high_filter}} by {host} > ${var.bytesin_high_critical}"
@@ -16,13 +17,16 @@ module "bytesin_high" {
   alerting_enabled   = var.bytesin_high_alerting_enabled
   critical_threshold = var.bytesin_high_critical
   warning_threshold  = var.bytesin_high_warning
-  priority           = var.bytesin_high_priority
+  priority           = min(var.bytesin_high_priority + var.priority_offset, 5)
   docs               = var.bytesin_high_docs
   note               = var.bytesin_high_note
 
   # module level vars
-  env                  = var.alert_env
+  env                  = var.env
   service              = var.service
   notification_channel = var.notification_channel
   additional_tags      = var.additional_tags
+  locked               = var.locked
+  name_prefix          = var.name_prefix
+  name_suffix          = var.name_suffix
 }
