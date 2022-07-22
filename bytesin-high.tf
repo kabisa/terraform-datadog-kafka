@@ -5,7 +5,7 @@ locals {
 
 module "bytesin_high" {
   source  = "kabisa/generic-monitor/datadog"
-  version = "0.7.5"
+  version = "1.0.0"
 
   name             = "BytesIn unusually high"
   query            = "avg(${var.bytesin_high_evaluation_period}):avg:kafka.net.bytes_in.rate{${local.bytesin_high_filter}} by {host} > ${var.bytesin_high_critical}"

@@ -1,3 +1,4 @@
+# tflint-ignore: terraform_module_version
 module "kafka" {
   source = "kabisa/kafka/datadog"
 

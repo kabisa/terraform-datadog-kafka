@@ -5,7 +5,7 @@ locals {
 
 module "unusual_follower_fetch_time" {
   source  = "kabisa/generic-monitor/datadog"
-  version = "0.7.5"
+  version = "1.0.0"
 
   name             = "Unusual Follower Fetch Time"
   query            = "avg(${var.unusual_follower_fetch_time_evaluation_period}):avg:kafka.request.fetch_follower.time.avg{${local.unusual_follower_fetch_time_filter}} > ${var.unusual_follower_fetch_time_critical}"

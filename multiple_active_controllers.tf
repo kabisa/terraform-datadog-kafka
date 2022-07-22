@@ -5,7 +5,7 @@ locals {
 
 module "multiple_active_controllers" {
   source  = "kabisa/generic-monitor/datadog"
-  version = "0.7.5"
+  version = "1.0.0"
 
   name             = "Multiple Active controllers"
   query            = "avg(${var.multiple_active_controllers_evaluation_period}):max:kafka.replication.active_controller_count{${local.multiple_active_controllers_filter}} by {aiven-project} > ${var.multiple_active_controllers_critical}"

@@ -5,7 +5,7 @@ locals {
 
 module "under_replicated_partitions" {
   source  = "kabisa/generic-monitor/datadog"
-  version = "0.7.5"
+  version = "1.0.0"
 
   name             = "UnderReplicated Partitions"
   query            = "avg(${var.under_replicated_partitions_evaluation_period}):avg:kafka.replication.under_replicated_partitions{${local.under_replicated_partitions_filter}} by {aiven-service} > ${var.under_replicated_partitions_critical}"

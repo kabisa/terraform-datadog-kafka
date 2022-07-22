@@ -1,6 +1,6 @@
 module "system" {
   source  = "kabisa/system/datadog"
-  version = "1.2.1"
+  version = "2.0.1"
 
   locked          = var.locked
   additional_tags = var.additional_tags

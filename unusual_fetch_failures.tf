@@ -5,7 +5,7 @@ locals {
 
 module "unusual_fetch_failures" {
   source  = "kabisa/generic-monitor/datadog"
-  version = "0.7.5"
+  version = "1.0.0"
 
   name             = "Unusual Fetch Failures"
   query            = "avg(${var.unusual_fetch_failures_evaluation_period}):avg:kafka.request.fetch.failed.rate{${local.unusual_fetch_failures_filter}} > ${var.unusual_fetch_failures_critical}"
