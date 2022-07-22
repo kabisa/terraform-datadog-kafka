@@ -5,7 +5,7 @@ locals {
 
 module "unusual_produce_failures" {
   source  = "kabisa/generic-monitor/datadog"
-  version = "0.7.5"
+  version = "1.0.0"
 
   name             = "Unusual Produce Failures"
   query            = "avg(${var.unusual_produce_failures_evaluation_period}):avg:kafka.request.produce.failed.rate{${local.unusual_produce_failures_filter}} > ${var.unusual_produce_failures_critical}"

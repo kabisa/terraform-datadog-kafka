@@ -5,7 +5,7 @@ locals {
 
 module "in_sync_nodes_dropped" {
   source  = "kabisa/generic-monitor/datadog"
-  version = "0.7.5"
+  version = "1.0.0"
 
   name             = "In Sync Nodes dropped"
   query            = "avg(${var.in_sync_nodes_dropped_evaluation_period}):max:kafka.replication.isr_shrinks.rate{${local.in_sync_nodes_dropped_filter}} by {aiven-service} - max:kafka.replication.isr_expands.rate{${local.in_sync_nodes_dropped_filter}} by {aiven-service} > ${var.in_sync_nodes_dropped_critical}"

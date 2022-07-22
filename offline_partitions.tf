@@ -5,7 +5,7 @@ locals {
 
 module "offline_partitions" {
   source  = "kabisa/generic-monitor/datadog"
-  version = "0.7.5"
+  version = "1.0.0"
 
   name             = "Offline Partitions"
   query            = "avg(${var.offline_partitions_evaluation_period}):max:kafka.replication.offline_partitions_count{${local.offline_partitions_filter}} > ${var.offline_partitions_critical}"

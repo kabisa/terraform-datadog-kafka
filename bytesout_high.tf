@@ -5,7 +5,7 @@ locals {
 
 module "bytesout_high" {
   source  = "kabisa/generic-monitor/datadog"
-  version = "0.7.5"
+  version = "1.0.0"
 
   name             = "BytesOut unusually high"
   query            = "avg(${var.bytesout_high_evaluation_period}):avg:kafka.net.bytes_out.rate{${local.bytesout_high_filter}} by {host} > ${var.bytesout_high_critical}"

@@ -5,7 +5,7 @@ locals {
 
 module "unusual_consumer_fetch_time" {
   source  = "kabisa/generic-monitor/datadog"
-  version = "0.7.5"
+  version = "1.0.0"
 
   name             = "Unusual Consumer Fetch Time"
   query            = "avg(${var.unusual_consumer_fetch_time_evaluation_period}):avg:kafka.request.fetch_consumer.time.avg{${local.unusual_consumer_fetch_time_filter}} > ${var.unusual_consumer_fetch_time_critical}"

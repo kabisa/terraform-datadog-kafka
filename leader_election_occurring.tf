@@ -5,7 +5,7 @@ locals {
 
 module "leader_election_occurring" {
   source  = "kabisa/generic-monitor/datadog"
-  version = "0.7.5"
+  version = "1.0.0"
 
   name             = "Leader Election occurring"
   query            = "max(${var.leader_election_occurring_evaluation_period}):avg:kafka.replication.leader_elections.rate{${local.leader_election_occurring_filter}} by {aiven-service} > ${var.leader_election_occurring_critical}"

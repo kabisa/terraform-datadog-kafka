@@ -5,7 +5,7 @@ locals {
 
 module "unclean_leader_election" {
   source  = "kabisa/generic-monitor/datadog"
-  version = "0.7.5"
+  version = "1.0.0"
 
   name             = "Unclean Leader Election"
   query            = "avg(${var.unclean_leader_election_evaluation_period}):max:kafka.replication.unclean_leader_elections.rate{${local.unclean_leader_election_filter}} by {aiven-project} > ${var.unclean_leader_election_critical}"

@@ -5,7 +5,7 @@ locals {
 
 module "unusual_produce_time" {
   source  = "kabisa/generic-monitor/datadog"
-  version = "0.7.5"
+  version = "1.0.0"
 
   name             = "Unusual Produce Time"
   query            = "avg(${var.unusual_produce_time_evaluation_period}):avg:kafka.request.produce.time.avg{${local.unusual_produce_time_filter}} > ${var.unusual_produce_time_critical}"

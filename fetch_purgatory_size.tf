@@ -5,7 +5,7 @@ locals {
 
 module "fetch_purgatory_size" {
   source  = "kabisa/generic-monitor/datadog"
-  version = "0.7.5"
+  version = "1.0.0"
 
   name             = "Fetch Purgatory Size"
   query            = "avg(${var.fetch_purgatory_size_evaluation_period}):max:kafka.request.fetch_request_purgatory.size{${local.fetch_purgatory_size_filter}} by {host} > ${var.fetch_purgatory_size_critical}"
